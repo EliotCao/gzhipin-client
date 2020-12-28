@@ -1,9 +1,13 @@
 import React from 'react'
 import {NavBar, WingBlank, List, InputItem, WhiteSpace, Radio, Button} from "antd-mobile";
+import {connect} from 'react-redux';
+import {Redirect} from "react-router-dom";
+
+import {register} from "../../redux/actions";
 import Logo from "../../components/logo/logo";
 const ListItem = List.Item;
 
-export default class Register extends React.Component {
+class Register extends React.Component {
     state = {
         username : '',  //用户名
         password : '',  //密码
@@ -11,7 +15,8 @@ export default class Register extends React.Component {
         type : 'laoBan'       //用户类型，大神/老板
     }
     register = () => {
-        console.log('register',this.state);
+        // console.log('register',this.state);
+        this.props.register(this.state);
     }
     handleChange = (name, value) => {
         this.setState({
@@ -23,12 +28,18 @@ export default class Register extends React.Component {
     }
     render() {
         const {type} = this.state;
+        const {msg, redirectTo} = this.props.user;
+        //如果有值，需要重定向
+        if (redirectTo){
+            return <Redirect to={redirectTo}/>
+        }
         return (
             <div>
                 <NavBar>硅&nbsp;谷&nbsp;直&nbsp;聘</NavBar>
                 <Logo/>
                 <WingBlank>
                     <List>
+                        {msg?<div className='error-msg'>{msg}</div>:null}
                         <InputItem placeholder='请输入用户名' onChange={value => {this.handleChange('username',value)}}>用户名:</InputItem>
                         <WhiteSpace/>
                         <InputItem placeholder='请输入密码' type='password' onChange={value => {this.handleChange('password',value)}}>密&nbsp;&nbsp;&nbsp;&nbsp;码:</InputItem>
@@ -50,3 +61,8 @@ export default class Register extends React.Component {
         )
     }
 }
+
+export default connect(
+    state => ({user: state.user}),
+    {register}
+)(Register)
