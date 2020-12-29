@@ -13,7 +13,6 @@ ReactDOM.render(
     <Provider store={store}>
         <HashRouter>
             <Switch>
-                {/*<Route path='/register' component={Register}/>*/}
                 <Route path="/register" component={Register}/>
                 <Route path='/login' component={Login}/>
                 <Route component={Main}/>

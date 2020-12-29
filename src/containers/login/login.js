@@ -1,11 +1,10 @@
 import React from 'react'
-import {Button, InputItem, List, NavBar, Radio, WhiteSpace, WingBlank} from "antd-mobile";
+import {Button, InputItem, List, NavBar, WhiteSpace, WingBlank} from "antd-mobile";
 import {connect} from 'react-redux';
 import {Redirect} from "react-router-dom";
 import {login} from "../../redux/actions";
 
 import Logo from "../../components/logo/logo";
-const ListItem = List.Item;
 
 class Login extends React.Component {
     state = {

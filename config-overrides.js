@@ -1,4 +1,4 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports, addLessLoader} = require('customize-cra');
 // const rewireLess = require('react-app-rewire-less');
 module.exports = override(
     addLessLoader( {
@@ -14,5 +14,5 @@ module.exports = override(
         libraryName: 'antd-mobile',
         libraryDirectory: 'es',
         style: true,
-    }),
+    })
 );
