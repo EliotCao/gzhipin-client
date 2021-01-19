@@ -27,12 +27,12 @@ class Personal extends Component {
     }
 
     render() {
-        const {username,type,header,company,post,salary,info} = this.props.user;
+        const {username,company,post,salary,info} = this.props.user;
 
         return (
-            <div>
+            <div style={{marginBottom:50, marginTop:50}}>
                 <Result
-                    img={<img src={require(`../../assets/images/头像1.png`)} style={{width: 50}} alt="header"/>}
+                    img={<img src={require(`../../assets/images/头像1.png`).default} style={{width: 50}} alt="header"/>}
                     title={username}
                     message={company}
                 />

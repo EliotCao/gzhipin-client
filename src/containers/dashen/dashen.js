@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {getUserList} from "../../redux/actions";
+import UserList from "../../components/user-list/user-list";
+
 class Dashen extends Component {
+    componentDidMount() {
+        //获取用户列表
+        this.props.getUserList('laoBan')
+    }
+
     render() {
         return (
-            <div>
-                Dashen
-            </div>
+            <UserList userList={this.props.userList}/>
         );
     }
 }
 
 export default connect(
-    state => ({}),
-    {}
+    state => ({userList: state.userList}),
+    {getUserList}
 )(Dashen);
